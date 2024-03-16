@@ -8,12 +8,12 @@
 		<version>3.2.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<groupId>br.com.arraiapp</groupId>
+	<artifactId>arraiapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<packaging>jar</packaging>
+	<name>arraiapp</name>
+	<description>ArraiApp</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
