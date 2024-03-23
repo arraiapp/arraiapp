@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,6 @@ public class ClienteController {
 		this.clienteService = clienteService;
 	}
 	
-	
 	@GetMapping("/cliente")
 	public Cliente getCliente(@RequestParam Integer id) {
 		Optional<Cliente> cliente = clienteService.getCliente(id);
@@ -29,5 +29,10 @@ public class ClienteController {
 			return (Cliente) cliente.get();
 		}
 		return null;
+	}
+	
+	@RequestMapping("/cadastro")
+	public void CadastraCliente(@RequestParam Integer id, String nome, String email,  String senha , String cpf) {
+		this.clienteService.cadastraCliente(id, nome, email, senha, cpf);
 	}
 }
