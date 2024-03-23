@@ -33,5 +33,11 @@ public class ClienteService {
 		}
 		return optional;
 	}
+	
+	public void cadastraCliente(Integer id, String nome, String email,  String senha , String cpf) {
+		Cliente clienteNovo = new Cliente(id,nome,email,senha,cpf);
+		clienteList.add(clienteNovo);
+	}
+	
 
 }
