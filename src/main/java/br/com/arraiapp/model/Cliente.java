@@ -2,6 +2,7 @@ package br.com.arraiapp.model;
 
 import java.util.ArrayList;
 
+
 public class Cliente {
 	private int id;
 	private String nome;
