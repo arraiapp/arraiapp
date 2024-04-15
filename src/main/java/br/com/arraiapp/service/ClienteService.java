@@ -43,7 +43,7 @@ public class ClienteService {
 	public Optional<Cliente> loginCliente(String cpf, String senha) {
 		Optional<Cliente> optional = Optional.empty();
 		for (Cliente cliente: clienteList) {
-			if (cpf.equals(cliente.getCpf()) || senha.equals(cliente.getSenha())) {
+			if (cpf.equals(cliente.getCpf()) && senha.equals(cliente.getSenha())) {
 				optional = Optional.of(cliente);
 				return optional;
 			}
