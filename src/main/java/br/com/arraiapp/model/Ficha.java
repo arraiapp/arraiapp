@@ -1,11 +1,17 @@
 package br.com.arraiapp.model;
 
 public class Ficha {
-	float valor;
+	
+	private Integer id;
+	private float valor;
 
 	public Ficha(float valor) {
 		super();
 		this.valor = valor;
+	}
+	
+	public Integer getId() {
+		return id;
 	}
 
 	public float getValor() {

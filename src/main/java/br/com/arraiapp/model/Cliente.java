@@ -2,13 +2,29 @@ package br.com.arraiapp.model;
 
 import java.util.ArrayList;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
+
+@Entity
 public class Cliente {
-	private int id;
+	
+	@Id
+	@GeneratedValue
+	private Integer id;
+	
+	@Column(nullable = false)
 	private String nome;
+	@Column(nullable = false)
 	private String email;
+	@Column(nullable = false)
 	private String senha;
+	@Column(nullable = false,
+			unique = true)
 	private String cpf;
+	
 	private float creditos;
 	private ArrayList<Ficha> fichas;
 	
@@ -19,6 +35,9 @@ public class Cliente {
 		this.email = email;
 		this.senha = senha;
 		this.cpf = cpf;
+	}
+	
+	public Cliente() {
 	}
 	
 	public int getId() {
