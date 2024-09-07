@@ -1,19 +1,12 @@
 package com.br.arraiapp.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import org.antlr.v4.runtime.misc.NotNull;
 
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-@Table(name = "user")
 public abstract class User {
+
 
     /*
     Dados do Diagram ade classes para referência.
@@ -31,7 +24,7 @@ public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
-    private int id;
+    private Long id;
 
     @Column(name ="name", length=100)
     private String name;

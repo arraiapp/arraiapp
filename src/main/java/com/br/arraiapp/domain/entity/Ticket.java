@@ -18,7 +18,7 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
     @Column(name="id")
-    private int id;
+    private Long id;
 
     @Column(name = "description")
     private String description;
