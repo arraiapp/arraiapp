@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ArraiAPP
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      format_sql: true
+    database: postgresql
+    database-plataform: org.hibernate.dialect.PostgreSQLDialect
