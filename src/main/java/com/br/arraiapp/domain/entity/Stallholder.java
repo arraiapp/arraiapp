@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.br.arraiapp.domain.entity.User;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

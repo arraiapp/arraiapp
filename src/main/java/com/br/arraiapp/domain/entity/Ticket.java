@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,4 +27,6 @@ public class Ticket {
     @Column( name = "value")
     private BigDecimal value;
 
+    @OneToMany (mappedBy = "ticket")
+    private Set<CustomerTicket> CustomerTicket;
 }

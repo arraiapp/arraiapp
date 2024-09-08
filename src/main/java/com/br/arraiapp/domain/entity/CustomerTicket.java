@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.awt.print.Book;
 
 @Data
 @AllArgsConstructor
@@ -19,7 +18,14 @@ public class CustomerTicket {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
-    private Boolean active;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
+    @ManyToOne
+    @JoinColumn(name = "ticket_id")
+    private Ticket ticket;
+
+    //Conferir se vamos criar um atributo
+    //private Boolean active;
 }
