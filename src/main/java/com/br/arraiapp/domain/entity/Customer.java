@@ -9,14 +9,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Set;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Data
 @Table( name = "customer")
 public class Customer extends User{
 
     @OneToMany (mappedBy = "customer", fetch = FetchType.LAZY)
     // Conferir o cascade em outra hora cascade = CascadeType.ALL)
     private Set<CustomerTicket> CustomerTicket;
+
 }

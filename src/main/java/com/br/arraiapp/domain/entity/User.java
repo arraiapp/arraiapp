@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 
-
+@Data
 @MappedSuperclass
 public abstract class User {
 
@@ -38,5 +38,6 @@ public abstract class User {
 
     @Column(name = "cpf", length = 11)
     private String cpf;
+
 
 }
