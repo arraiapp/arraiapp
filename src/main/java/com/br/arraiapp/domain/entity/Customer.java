@@ -21,4 +21,6 @@ public class Customer extends User{
     // Conferir o cascade em outra hora cascade = CascadeType.ALL)
     private Set<CustomerTicket> CustomerTicket;
 
+    public Customer(String name, String email, String password, String cpf) {
+    }
 }

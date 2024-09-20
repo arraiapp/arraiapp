@@ -2,7 +2,6 @@ package com.br.arraiapp.rest.controller;
 
 import com.br.arraiapp.domain.entity.Customer;
 import com.br.arraiapp.domain.entity.dto.CustomerDTO;
-import com.br.arraiapp.domain.entity.repository.CustomersRepository;
 import com.br.arraiapp.service.implementation.CustomerServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,7 +20,7 @@ public class CustomerController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE )
     @ResponseStatus(HttpStatus.CREATED)
-    public Customer save(@RequestBody CustomerDTO customerDTO) {
+    public CustomerDTO save(@RequestBody CustomerDTO customerDTO) {
         return customerServiceImp.save(customerDTO);
     }
 
@@ -30,9 +29,8 @@ public class CustomerController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE )
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Customer login(@RequestBody CustomerDTO customerDTO){
-        Customer customer  = customerServiceImp.login(customerDTO);
-        return customer;
+    public CustomerDTO login(@RequestBody CustomerDTO customerDTO){
+        return customerServiceImp.login(customerDTO);
     }
 
 }
