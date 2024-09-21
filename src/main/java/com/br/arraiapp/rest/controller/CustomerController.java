@@ -8,6 +8,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 
+
+//Cross origin temporário, depois temos que acertar isso lá nas permissões, com a URL de verdade.
+@CrossOrigin("http://localhost:4200/")
 @RestController
 @RequestMapping("/api/customer")
 public class CustomerController {

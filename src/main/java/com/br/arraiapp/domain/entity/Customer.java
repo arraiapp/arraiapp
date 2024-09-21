@@ -22,5 +22,9 @@ public class Customer extends User{
     private Set<CustomerTicket> CustomerTicket;
 
     public Customer(String name, String email, String password, String cpf) {
+        this.setName(name);
+        this.setEmail(email);
+        this.setPassword(password);
+        this.setCpf(cpf);
     }
 }
