@@ -1,4 +1,4 @@
-package com.br.arraiapp.service.implementation;
+package com.br.arraiapp.service;
 
 import com.br.arraiapp.domain.entity.dto.StallholderDTO;
 

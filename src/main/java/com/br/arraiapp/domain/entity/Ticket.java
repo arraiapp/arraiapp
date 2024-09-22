@@ -29,4 +29,9 @@ public class Ticket {
 
     @OneToMany (mappedBy = "ticket")
     private Set<CustomerTicket> CustomerTicket;
+
+    public Ticket(String description, BigDecimal value) {
+        this.description = description;
+        this.value = value;
+    }
 }
