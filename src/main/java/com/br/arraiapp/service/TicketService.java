@@ -5,5 +5,11 @@ import com.br.arraiapp.domain.entity.dto.TicketDTO;
 public interface TicketService {
 
 
-    public TicketDTO save(TicketDTO ticketDTO);
+    TicketDTO save(TicketDTO ticketDTO);
+
+    void delete(Long id);
+
+    void update(Long id, TicketDTO ticketDTO);
+
+    //Public List<TicketDTO> findAll();
 }
