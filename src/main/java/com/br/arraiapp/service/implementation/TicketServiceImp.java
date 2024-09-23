@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -51,6 +52,17 @@ public class TicketServiceImp implements TicketService {
                 }).orElseThrow( () ->
                         new ResponseStatusException(HttpStatus.NOT_FOUND,
                                 "Ficha não encontrada."));
+    }
+
+    public List<TicketDTO> findAll() {
+        List<Ticket> ticketList = repository.findAll();
+        List<TicketDTO> ticketDTOList = new ArrayList<>();
+
+        for (Ticket ticket : ticketList) {
+            ticketDTOList.add(EntityToDTO(ticket));
+        }
+
+        return ticketDTOList;
     }
 
 

@@ -15,4 +15,3 @@ spring:
     properties:
       format_sql: true
     database: postgresql
-    database-plataform: org.hibernate.dialect.PostgreSQLDialect

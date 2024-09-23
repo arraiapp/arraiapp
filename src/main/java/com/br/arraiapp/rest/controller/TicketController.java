@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin("http://localhost:5000/")
 @RestController
 @RequestMapping("/api/ticket")
@@ -43,5 +45,14 @@ public class TicketController {
     public void update(@PathVariable Long id, @RequestBody TicketDTO ticketDTO) {
         service.update(id, ticketDTO);
     }
+
+    @ResponseStatus(HttpStatus.FOUND)
+    @GetMapping(
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<TicketDTO> findAll (){
+        return service.findAll();
+    }
+
+
 
 }
