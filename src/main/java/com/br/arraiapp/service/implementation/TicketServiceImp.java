@@ -75,6 +75,7 @@ public class TicketServiceImp implements TicketService {
 
     public TicketDTO EntityToDTO (Ticket ticket) {
         return new TicketDTO(
+                ticket.getId(),
                 ticket.getDescription(),
                 ticket.getValue()
         );

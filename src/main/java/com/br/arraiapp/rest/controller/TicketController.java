@@ -46,8 +46,7 @@ public class TicketController {
         service.update(id, ticketDTO);
     }
 
-    @ResponseStatus(HttpStatus.FOUND)
-    @GetMapping(
+    @GetMapping(value = "/getAll",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public List<TicketDTO> findAll (){
         return service.findAll();
