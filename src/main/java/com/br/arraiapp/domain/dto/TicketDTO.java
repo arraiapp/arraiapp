@@ -1,4 +1,4 @@
-package com.br.arraiapp.domain.entity.dto;
+package com.br.arraiapp.domain.dto;
 
 import java.math.BigDecimal;
 

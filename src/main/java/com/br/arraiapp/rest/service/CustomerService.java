@@ -1,6 +1,6 @@
-package com.br.arraiapp.service;
+package com.br.arraiapp.rest.service;
 
-import com.br.arraiapp.domain.entity.dto.CustomerDTO;
+import com.br.arraiapp.domain.dto.CustomerDTO;
 
 public interface CustomerService {
     CustomerDTO save(CustomerDTO customerDTO);

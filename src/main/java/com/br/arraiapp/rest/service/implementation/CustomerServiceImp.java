@@ -1,9 +1,9 @@
-package com.br.arraiapp.service.implementation;
+package com.br.arraiapp.rest.service.implementation;
 
 import com.br.arraiapp.domain.entity.Customer;
-import com.br.arraiapp.domain.entity.dto.CustomerDTO;
-import com.br.arraiapp.domain.entity.repository.CustomersRepository;
-import com.br.arraiapp.service.CustomerService;
+import com.br.arraiapp.domain.dto.CustomerDTO;
+import com.br.arraiapp.domain.repository.CustomersRepository;
+import com.br.arraiapp.rest.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

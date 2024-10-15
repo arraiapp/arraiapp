@@ -1,6 +1,6 @@
-package com.br.arraiapp.service;
+package com.br.arraiapp.rest.service;
 
-import com.br.arraiapp.domain.entity.dto.TicketDTO;
+import com.br.arraiapp.domain.dto.TicketDTO;
 
 import java.util.List;
 
