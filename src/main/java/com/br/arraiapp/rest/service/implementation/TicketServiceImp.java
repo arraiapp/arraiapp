@@ -1,9 +1,10 @@
-package com.br.arraiapp.service.implementation;
+package com.br.arraiapp.rest.service.implementation;
 
 import com.br.arraiapp.domain.entity.Ticket;
-import com.br.arraiapp.domain.entity.dto.TicketDTO;
-import com.br.arraiapp.domain.entity.repository.TicketRepository;
-import com.br.arraiapp.service.TicketService;
+import com.br.arraiapp.domain.dto.TicketDTO;
+import com.br.arraiapp.domain.exception.ResourceNotFoundException;
+import com.br.arraiapp.domain.repository.TicketRepository;
+import com.br.arraiapp.rest.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,6 @@ public class TicketServiceImp implements TicketService {
     @Autowired
     private TicketRepository repository;
 
-    @Override
     public TicketDTO save(TicketDTO ticketDTO) {
         Ticket ticket = DTOToEntity(ticketDTO);
         return EntityToDTO(
@@ -28,7 +28,7 @@ public class TicketServiceImp implements TicketService {
     }
 
     //Mudar e colocar o handler de excpetion depois.
-    @Override
+
     public void delete(Long id) {
         repository
                 .findById(id)
@@ -36,22 +36,21 @@ public class TicketServiceImp implements TicketService {
                     repository.delete(p);
                     return Void.TYPE;
                 }).orElseThrow( () ->
-                        new ResponseStatusException(HttpStatus.NOT_FOUND,
-                                "Ficha não encontrada!"));
+                        new ResourceNotFoundException("No tickets found for this ID")
+                );
     }
 
-    @Override
-    public void update(Long id, TicketDTO ticketDTO){
+    public void update(TicketDTO ticketDTO){
         Ticket ticketParam = DTOToEntity(ticketDTO);
         repository
-                .findById(id)
+                .findById(ticketDTO.id())
                 .map( ticket -> {
                     ticketParam.setId(ticket.getId());
                     repository.save(ticketParam);
                     return ticketParam;
                 }).orElseThrow( () ->
-                        new ResponseStatusException(HttpStatus.NOT_FOUND,
-                                "Ficha não encontrada."));
+                        new ResourceNotFoundException("No tickets found for this ID")
+                );
     }
 
     public List<TicketDTO> findAll() {

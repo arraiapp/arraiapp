@@ -1,8 +1,7 @@
 package com.br.arraiapp.rest.controller;
 
-import com.br.arraiapp.domain.entity.Customer;
-import com.br.arraiapp.domain.entity.dto.CustomerDTO;
-import com.br.arraiapp.service.implementation.CustomerServiceImp;
+import com.br.arraiapp.domain.dto.CustomerDTO;
+import com.br.arraiapp.rest.service.implementation.CustomerServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

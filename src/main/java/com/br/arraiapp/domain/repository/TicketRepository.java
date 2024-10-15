@@ -1,4 +1,4 @@
-package com.br.arraiapp.domain.entity.repository;
+package com.br.arraiapp.domain.repository;
 
 import com.br.arraiapp.domain.entity.Stallholder;
 import com.br.arraiapp.domain.entity.Ticket;

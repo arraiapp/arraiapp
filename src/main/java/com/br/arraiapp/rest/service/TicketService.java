@@ -1,6 +1,6 @@
-package com.br.arraiapp.service;
+package com.br.arraiapp.rest.service;
 
-import com.br.arraiapp.domain.entity.dto.TicketDTO;
+import com.br.arraiapp.domain.dto.TicketDTO;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public interface TicketService {
 
     void delete(Long id);
 
-    void update(Long id, TicketDTO ticketDTO);
+    void update(TicketDTO ticketDTO);
 
     public List<TicketDTO> findAll();
 

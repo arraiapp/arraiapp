@@ -1,7 +1,7 @@
 package com.br.arraiapp.rest.controller;
 
-import com.br.arraiapp.domain.entity.dto.StallholderDTO;
-import com.br.arraiapp.service.implementation.StallholderServiceImp;
+import com.br.arraiapp.domain.dto.StallholderDTO;
+import com.br.arraiapp.rest.service.implementation.StallholderServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
