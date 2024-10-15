@@ -3,6 +3,7 @@ package com.br.arraiapp.rest.service.implementation;
 
 import com.br.arraiapp.domain.entity.Stallholder;
 import com.br.arraiapp.domain.dto.StallholderDTO;
+import com.br.arraiapp.domain.exception.ResourceNotFoundException;
 import com.br.arraiapp.domain.repository.StallholdersRepository;
 import com.br.arraiapp.rest.service.StallholderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,7 @@ public class StallholderServiceImp implements StallholderService {
         return EntityToDTO(repository
                 .findByCpfAndPassword(stallholderDTO.cpf(), stallholderDTO.password())
                 .orElseThrow(() ->
-                        new ResponseStatusException(HttpStatus.NOT_FOUND,
-                                "CPF ou senha inválidos")));
+                        new ResourceNotFoundException("Dados incorretos")));
     }
 
     public Stallholder DTOToEntity (StallholderDTO stallholderDTO) {

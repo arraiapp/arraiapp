@@ -11,7 +11,7 @@ public interface TicketService {
 
     void delete(Long id);
 
-    void update(Long id, TicketDTO ticketDTO);
+    void update(TicketDTO ticketDTO);
 
     public List<TicketDTO> findAll();
 

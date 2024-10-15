@@ -1,4 +1,4 @@
-package com.br.arraiapp.domain.exception;
+package com.br.arraiapp.domain.exception.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

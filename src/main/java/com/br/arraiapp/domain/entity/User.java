@@ -3,12 +3,14 @@ package com.br.arraiapp.domain.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.io.Serializable;
+
 
 @Data
 @MappedSuperclass
-public abstract class User {
+public abstract class User implements Serializable {
 
-
+    static final long serialVersionUID = 1L;
     /*
     Dados do Diagram ade classes para referência.
     -Id: Long

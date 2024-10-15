@@ -33,8 +33,8 @@ public class TicketController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Long id, @RequestBody TicketDTO ticketDTO) {
-        service.update(id, ticketDTO);
+    public void update(@RequestBody TicketDTO ticketDTO) {
+        service.update(ticketDTO);
     }
 
     @GetMapping(value = "/getAll",

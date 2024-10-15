@@ -2,6 +2,7 @@ package com.br.arraiapp.rest.service.implementation;
 
 import com.br.arraiapp.domain.entity.Customer;
 import com.br.arraiapp.domain.dto.CustomerDTO;
+import com.br.arraiapp.domain.exception.RequiredObjectIsNullException;
 import com.br.arraiapp.domain.repository.CustomersRepository;
 import com.br.arraiapp.rest.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class CustomerServiceImp implements CustomerService {
     private CustomersRepository repository;
 
     public CustomerDTO save (CustomerDTO customerDTO) {
+
+        if (customerDTO == null ) throw new RequiredObjectIsNullException();
+
         Customer customer = DTOToEntity(customerDTO);
         repository.save(customer);
         return customerDTO;
