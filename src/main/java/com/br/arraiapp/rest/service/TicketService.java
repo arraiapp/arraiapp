@@ -11,10 +11,11 @@ public interface TicketService {
 
     void delete(Long id);
 
-    void update(TicketDTO ticketDTO);
+    TicketDTO update(TicketDTO ticketDTO);
 
     public List<TicketDTO> findAll();
 
+    public TicketDTO findById(Long id);
 
     //Public List<TicketDTO> findAll();
 }

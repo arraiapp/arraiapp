@@ -26,15 +26,14 @@ public class TicketController {
     }
 
     @DeleteMapping("{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
 
-    @PutMapping("{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@RequestBody TicketDTO ticketDTO) {
-        service.update(ticketDTO);
+
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public TicketDTO update(@RequestBody TicketDTO ticketDTO) {
+        return service.update(ticketDTO);
     }
 
     @GetMapping(value = "/getAll",
@@ -44,6 +43,7 @@ public class TicketController {
         return service.findAll();
     }
 
-
+    @GetMapping("{id}")
+    public TicketDTO findById (@PathVariable Long id) { return service.findById(id);}
 
 }

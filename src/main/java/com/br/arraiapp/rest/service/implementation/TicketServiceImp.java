@@ -13,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TicketServiceImp implements TicketService {
@@ -40,15 +41,16 @@ public class TicketServiceImp implements TicketService {
                 );
     }
 
-    public void update(TicketDTO ticketDTO){
-        Ticket ticketParam = DTOToEntity(ticketDTO);
-        repository
+    public TicketDTO update(TicketDTO ticketDTO) {
+        return repository
                 .findById(ticketDTO.id())
-                .map( ticket -> {
-                    ticketParam.setId(ticket.getId());
-                    repository.save(ticketParam);
-                    return ticketParam;
-                }).orElseThrow( () ->
+                .map(ticket -> {
+                    ticket.setDescription(ticketDTO.description());
+                    ticket.setValue(ticketDTO.value());
+                    return EntityToDTO(
+                            repository.save(ticket)
+                    );
+                }).orElseThrow(() ->
                         new ResourceNotFoundException("No tickets found for this ID")
                 );
     }
@@ -64,6 +66,12 @@ public class TicketServiceImp implements TicketService {
         return ticketDTOList;
     }
 
+    public TicketDTO findById(Long id) {
+        return EntityToDTO(repository
+                .findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("No tickets found for this ID")));
+    }
 
     public Ticket DTOToEntity (TicketDTO ticketDTO) {
         return new Ticket(
