@@ -63,10 +63,10 @@ public class CheckoutServiceImp implements CheckoutService {
                     "}" +
                 "]";
         //Redirect Url
-        String redirectUrl = ",\"redirect_url\":\"https://pagseguro.uol.com.br\"";
+        String redirectUrl = ",\"redirect_url\":\"http://arraiapp.dev/api/checkout/notify-checkout\"";
 
         //Payment Notification Url
-        String paymentNotificationURL = ",\"payment_notification_urls\":[\"https://pagseguro.uol.com.br\"]";
+        String paymentNotificationURL = ",\"payment_notification_urls\":[\"http://arraiapp.dev/api/checkout/notify-checkout\"]";
 
         String requestBody = "{" + customerData + ticketData + paymentMethods + redirectUrl + paymentNotificationURL + "}";
 
