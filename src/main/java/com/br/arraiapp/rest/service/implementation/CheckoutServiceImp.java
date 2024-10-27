@@ -44,7 +44,7 @@ public class CheckoutServiceImp implements CheckoutService {
                         "\"reference_id\":\"2\"," +
                         "\"name\":\"ticket 2\"," +
                         "\"description\":\"ticket 2 desc\"," +
-                        "\"quantity\":\"1\"," +
+                        "\"quantity\":\"2\"," +
                         "\"unit_amount\":\"500\"" +
                     "}" +
                 "],";
@@ -62,9 +62,13 @@ public class CheckoutServiceImp implements CheckoutService {
                         "\"type\":\"PIX\"" +
                     "}" +
                 "]";
+        //Redirect Url
+        String redirectUrl = ",\"redirect_url\":\"https://pagseguro.uol.com.br\"";
 
+        //Payment Notification Url
+        String paymentNotificationURL = ",\"payment_notification_urls\":[\"https://pagseguro.uol.com.br\"]";
 
-        String requestBody = "{" + customerData + ticketData + paymentMethods +"}";
+        String requestBody = "{" + customerData + ticketData + paymentMethods + redirectUrl + paymentNotificationURL + "}";
 
         RequestEntity<?> request = RequestEntity
                 .post(url)
@@ -72,6 +76,7 @@ public class CheckoutServiceImp implements CheckoutService {
                 .accept(MediaType.APPLICATION_JSON)
                 .body(requestBody);
 
+        System.out.println(restTemplate.exchange(request, String.class));
         return restTemplate.exchange(request, String.class);
     }
 
