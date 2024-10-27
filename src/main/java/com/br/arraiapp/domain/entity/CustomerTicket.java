@@ -30,6 +30,8 @@ public class CustomerTicket implements Serializable {
     @JoinColumn(name = "ticket_id")
     private Ticket ticket;
 
+    @Column(name = "quantity")
+    private Long quantity;
     //Conferir se vamos criar um atributo
     //private Boolean active;
 }

@@ -40,10 +40,11 @@ public class TicketController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<TicketDTO> findAll (){
-        return service.findAll();
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAA");return service.findAll();
     }
 
     @GetMapping("{id}")
     public TicketDTO findById (@PathVariable Long id) { return service.findById(id);}
+
 
 }

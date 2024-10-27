@@ -41,5 +41,8 @@ public abstract class User implements Serializable {
     @Column(name = "cpf", length = 11)
     private String cpf;
 
+    @Column(name = "phone", length = 11)
+    private String phone;
+
 
 }
