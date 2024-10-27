@@ -4,7 +4,7 @@ spring:
     locations: classpath:db/migration
     baseline-on-migrate: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/ArraiAPP
+    url: jdbc:postgresql://localhost:5432/arraiapp
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: root
