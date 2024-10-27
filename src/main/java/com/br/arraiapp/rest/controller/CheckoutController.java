@@ -19,7 +19,7 @@ public class CheckoutController {
         return service.createCheckout();
     }
 
-@PostMapping(value = "/notify-checkout")
+@GetMapping(value = "/notify-checkout")
     public void receiveCheckoutNotification(@RequestBody String string){
         System.out.println(string);
     }
