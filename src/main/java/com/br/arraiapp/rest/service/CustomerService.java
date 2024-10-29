@@ -1,9 +1,9 @@
 package com.br.arraiapp.rest.service;
 
-import com.br.arraiapp.domain.dto.CustomerDTO;
+import com.br.arraiapp.domain.dto.customer.CustomerRequestDTO;
 
 public interface CustomerService {
-    CustomerDTO save(CustomerDTO customerDTO);
+    CustomerRequestDTO save(CustomerRequestDTO customerRequestDTO);
 
-    CustomerDTO login(CustomerDTO customerDTO);
+    CustomerRequestDTO login(CustomerRequestDTO customerRequestDTO);
 }

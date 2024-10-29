@@ -1,6 +1,6 @@
 package com.br.arraiapp.rest.controller;
 
-import com.br.arraiapp.domain.dto.TicketDTO;
+import com.br.arraiapp.domain.dto.ticket.TicketDTO;
 import com.br.arraiapp.rest.service.implementation.TicketServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

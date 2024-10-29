@@ -19,11 +19,22 @@ public class Stallholder extends User {
     @Column
     private Boolean Admin;
 
-    public Stallholder(String name, String email, String password, String cpf, Boolean Admin) {
+    public Stallholder(Long id,String name, String email, String password, String cpf, String phone, Boolean Admin) {
+        this.setId(id);
         this.setName(name);
         this.setEmail(email);
         this.setPassword(password);
         this.setCpf(cpf);
+        this.setPhone(phone);
+        this.setAdmin(Admin);
+    }
+
+    public Stallholder(String name, String email, String password, String cpf, String phone, Boolean Admin) {
+        this.setName(name);
+        this.setEmail(email);
+        this.setPassword(password);
+        this.setCpf(cpf);
+        this.setPhone(phone);
         this.setAdmin(Admin);
     }
 

@@ -1,10 +1,10 @@
 package com.br.arraiapp.rest.service;
 
-import com.br.arraiapp.domain.dto.StallholderDTO;
+import com.br.arraiapp.domain.dto.stallholder.StallholderRequestDTO;
 
 public interface StallholderService {
 
-    StallholderDTO login(StallholderDTO customerDTO);
+    StallholderRequestDTO login(StallholderRequestDTO customerDTO);
 
-    StallholderDTO save(StallholderDTO customerDTO);
+    StallholderRequestDTO save(StallholderRequestDTO customerDTO);
 }

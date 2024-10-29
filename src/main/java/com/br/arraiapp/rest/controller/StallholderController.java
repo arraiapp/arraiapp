@@ -1,6 +1,6 @@
 package com.br.arraiapp.rest.controller;
 
-import com.br.arraiapp.domain.dto.StallholderDTO;
+import com.br.arraiapp.domain.dto.stallholder.StallholderRequestDTO;
 import com.br.arraiapp.rest.service.implementation.StallholderServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +21,8 @@ public class StallholderController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE )
     @ResponseStatus(HttpStatus.CREATED)
-    public StallholderDTO save(@RequestBody StallholderDTO stallholderDTO) {
-        return stallholderServiceImp.save(stallholderDTO);
+    public StallholderRequestDTO save(@RequestBody StallholderRequestDTO stallholderRequestDTO) {
+        return stallholderServiceImp.save(stallholderRequestDTO);
     }
 
     @RequestMapping(value = "/login",
@@ -30,8 +30,8 @@ public class StallholderController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE )
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public StallholderDTO login(@RequestBody StallholderDTO stallholderDTO){
-        return stallholderServiceImp.login(stallholderDTO);
+    public StallholderRequestDTO login(@RequestBody StallholderRequestDTO stallholderRequestDTO){
+        return stallholderServiceImp.login(stallholderRequestDTO);
     }
 
 }

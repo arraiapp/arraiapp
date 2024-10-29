@@ -1,52 +1,33 @@
 package com.br.arraiapp.rest.service.implementation;
 
 
+import com.br.arraiapp.domain.dto.stallholder.StallholderMapper;
 import com.br.arraiapp.domain.entity.Stallholder;
-import com.br.arraiapp.domain.dto.StallholderDTO;
+import com.br.arraiapp.domain.dto.stallholder.StallholderRequestDTO;
 import com.br.arraiapp.domain.exception.ResourceNotFoundException;
 import com.br.arraiapp.domain.repository.StallholdersRepository;
 import com.br.arraiapp.rest.service.StallholderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class StallholderServiceImp implements StallholderService {
 
     @Autowired
     private StallholdersRepository repository;
+    private final StallholderMapper mapper = new StallholderMapper();
 
-    public StallholderDTO save(StallholderDTO stallholderDTO) {
-        Stallholder stallholder = DTOToEntity(stallholderDTO);
+    public StallholderRequestDTO save(StallholderRequestDTO stallholderRequestDTO) {
+        Stallholder stallholder = mapper.toEntity(stallholderRequestDTO);
         repository.save(stallholder);
-        return stallholderDTO;
+        return stallholderRequestDTO;
     }
 
-    public StallholderDTO login(StallholderDTO stallholderDTO){
-        return EntityToDTO(repository
-                .findByCpfAndPassword(stallholderDTO.cpf(), stallholderDTO.password())
+    public StallholderRequestDTO login(StallholderRequestDTO stallholderRequestDTO){
+        return mapper.toDtoRequest(repository
+                .findByCpfAndPassword(stallholderRequestDTO.cpf(), stallholderRequestDTO.password())
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Dados incorretos")));
     }
 
-    public Stallholder DTOToEntity (StallholderDTO stallholderDTO) {
-        return new Stallholder(
-                stallholderDTO.name(),
-                stallholderDTO.email(),
-                stallholderDTO.password(),
-                stallholderDTO.cpf(),
-                stallholderDTO.Admin()
-        );
-    }
-
-    public StallholderDTO EntityToDTO (Stallholder stallholder) {
-        return new StallholderDTO(
-                stallholder.getName(),
-                stallholder.getEmail(),
-                stallholder.getEmail(),
-                stallholder.getCpf(),
-                stallholder.getAdmin()
-        );
-    }
 }

@@ -32,6 +32,10 @@ public class CustomerTicket implements Serializable {
 
     @Column(name = "quantity")
     private Long quantity;
-    //Conferir se vamos criar um atributo
-    //private Boolean active;
+
+    public CustomerTicket(Customer customer, Ticket ticket, Long quantity) {
+        this.customer = customer;
+        this.ticket = ticket;
+        this.quantity = quantity;
+    }
 }

@@ -21,10 +21,20 @@ public class Customer extends User{
     // Conferir o cascade em outra hora cascade = CascadeType.ALL)
     private Set<CustomerTicket> CustomerTicket;
 
-    public Customer(String name, String email, String password, String cpf) {
+    public Customer(Long id, String name, String email, String password, String cpf, String phone) {
+        this.setId(id);
         this.setName(name);
         this.setEmail(email);
         this.setPassword(password);
         this.setCpf(cpf);
+        this.setPhone(phone);
+    }
+
+    public Customer(String name, String email, String password, String cpf, String phone) {
+        this.setName(name);
+        this.setEmail(email);
+        this.setPassword(password);
+        this.setCpf(cpf);
+        this.setPhone(phone);
     }
 }

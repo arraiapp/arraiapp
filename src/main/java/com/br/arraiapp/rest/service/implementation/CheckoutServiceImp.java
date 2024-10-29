@@ -68,7 +68,7 @@ public class CheckoutServiceImp implements CheckoutService {
         //Payment Notification Url
         String paymentNotificationURL = ",\"payment_notification_urls\":[\"http://ec2-3-86-32-26.compute-1.amazonaws.com:8080/api/checkout/notify-checkout\"]";
 
-        String requestBody = "{" + customerData + ticketData + paymentMethods + redirectUrl + paymentNotificationURL + "}";
+        String requestBody = "{" + customerData + ticketData + paymentMethods + paymentNotificationURL + "}";
 
         RequestEntity<?> request = RequestEntity
                 .post(url)

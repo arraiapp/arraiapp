@@ -1,6 +1,6 @@
 package com.br.arraiapp.rest.controller;
 
-import com.br.arraiapp.domain.dto.CustomerDTO;
+import com.br.arraiapp.domain.dto.customer.CustomerRequestDTO;
 import com.br.arraiapp.rest.service.implementation.CustomerServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -22,8 +22,8 @@ public class CustomerController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE )
     @ResponseStatus(HttpStatus.CREATED)
-    public CustomerDTO save(@RequestBody CustomerDTO customerDTO) {
-        return customerServiceImp.save(customerDTO);
+    public CustomerRequestDTO save(@RequestBody CustomerRequestDTO customerRequestDTO) {
+        return customerServiceImp.save(customerRequestDTO);
     }
 
     @RequestMapping(value = "/login",
@@ -31,8 +31,8 @@ public class CustomerController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE )
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public CustomerDTO login(@RequestBody CustomerDTO customerDTO){
-        return customerServiceImp.login(customerDTO);
+    public CustomerRequestDTO login(@RequestBody CustomerRequestDTO customerRequestDTO){
+        return customerServiceImp.login(customerRequestDTO);
     }
 
 }
