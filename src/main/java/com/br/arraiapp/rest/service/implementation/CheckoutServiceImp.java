@@ -63,7 +63,7 @@ public class CheckoutServiceImp implements CheckoutService {
                     "}" +
                 "]";
         //Redirect Url
-        String redirectUrl = ",\"redirect_url\":\"http://arraiapp.dev/api/checkout/notify-checkout\"";
+        //String redirectUrl = ",\"redirect_url\":\"http://arraiapp.dev/api/checkout/notify-checkout\"";
 
         //Payment Notification Url
         String paymentNotificationURL = ",\"payment_notification_urls\":[\"http://ec2-3-86-32-26.compute-1.amazonaws.com:8080/api/checkout/notify-checkout\"]";
