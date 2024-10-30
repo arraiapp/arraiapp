@@ -20,13 +20,13 @@ public class Ticket implements Serializable {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
-    @Column(name="id")
+    @Column(name="id",nullable=false)
     private Long id;
 
-    @Column(name = "description")
+    @Column(name = "description",nullable=false)
     private String description;
 
-    @Column( name = "value")
+    @Column( name = "value",nullable=false)
     private BigDecimal value;
 
     @OneToMany (mappedBy = "ticket")

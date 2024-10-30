@@ -8,7 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 //Cross origin temporário, depois temos que acertar isso lá nas permissões, com a URL de verdade.
-@CrossOrigin("http://localhost:5000/")
+@CrossOrigin
 @RestController
 @RequestMapping("/api/stallholder")
 public class StallholderController {

@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/checkout")
 public class CheckoutController {
@@ -19,10 +20,12 @@ public class CheckoutController {
         return service.createCheckout();
     }
 
-@PostMapping(value = "/notify-checkout")
+    @PostMapping(value = "/notify-checkout")
     public void receiveCheckoutNotification(@RequestBody String string){
         System.out.println(string);
     }
+
+
 
 
 }

@@ -16,7 +16,7 @@ import com.br.arraiapp.domain.entity.User;
 @Table(name = "stallholder")
 public class Stallholder extends User {
 
-    @Column
+    @Column(name = "admin",nullable=false)
     private Boolean Admin;
 
     public Stallholder(Long id,String name, String email, String password, String cpf, String phone, Boolean Admin) {

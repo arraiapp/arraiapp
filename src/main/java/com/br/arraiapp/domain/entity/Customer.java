@@ -18,7 +18,6 @@ import java.util.Set;
 public class Customer extends User{
 
     @OneToMany (mappedBy = "customer", fetch = FetchType.LAZY)
-    // Conferir o cascade em outra hora cascade = CascadeType.ALL)
     private Set<CustomerTicket> CustomerTicket;
 
     public Customer(Long id, String name, String email, String password, String cpf, String phone) {

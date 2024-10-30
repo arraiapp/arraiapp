@@ -2,6 +2,7 @@ package com.br.arraiapp.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.io.Serializable;
 
@@ -29,19 +30,19 @@ public abstract class User implements Serializable {
     @Column(name="id")
     private Long id;
 
-    @Column(name ="name", length=100)
+    @Column(name ="name", length=100, nullable=false)
     private String name;
 
-    @Column(name = "email", length = 100)
+    @Column(name = "email", length = 100, nullable=false)
     private String email;
 
-    @Column(name = "password", length = 100)
+    @Column(name = "password", length = 100, nullable=false)
     private String password;
 
-    @Column(name = "cpf", length = 11)
+    @Column(name = "cpf", length = 11, nullable=false)
     private String cpf;
 
-    @Column(name = "phone", length = 11)
+    @Column(name = "phone", length = 11, nullable=false)
     private String phone;
 
 
