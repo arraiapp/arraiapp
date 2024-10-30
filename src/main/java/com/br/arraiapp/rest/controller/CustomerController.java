@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 
 
 //Cross origin temporário, depois temos que acertar isso lá nas permissões, com a URL de verdade.
+@CrossOrigin
 @RestController
 @RequestMapping("/api/customer")
 public class CustomerController {
