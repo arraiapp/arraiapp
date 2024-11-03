@@ -28,6 +28,7 @@ public class CheckoutServiceImp implements CheckoutService {
                     "\"name\":\"João teste\"," +
                     "\"email\":\"joao@teste.com\"," +
                     "\"tax_id\":\"12345678909\"" +
+                    "\"phone\":{\"country\":\"+55\",\"area\":\"27\",\"number\":\"999999999\"}" +
                 "},";
 
         //Ticket data
@@ -66,7 +67,7 @@ public class CheckoutServiceImp implements CheckoutService {
         //String redirectUrl = ",\"redirect_url\":\"http://arraiapp.dev/api/checkout/notify-checkout\"";
 
         //Payment Notification Url
-        String paymentNotificationURL = ",\"payment_notification_urls\":[\"http://ec2-3-86-32-26.compute-1.amazonaws.com:8080/api/checkout/notify-checkout\"]";
+        String paymentNotificationURL = ",\"payment_notification_urls\":[\"http://ec2-3-86-32-26.compute-1.amazonaws.com:8080/api/customer-ticket/get-paymentData\"]";
 
         String requestBody = "{" + customerData + ticketData + paymentMethods + paymentNotificationURL + "}";
 
