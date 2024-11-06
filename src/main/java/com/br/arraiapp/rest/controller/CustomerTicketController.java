@@ -1,38 +1,43 @@
 package com.br.arraiapp.rest.controller;
 
+import com.br.arraiapp.domain.dto.CustomerTicket.CustomerTicketDTO;
+import com.br.arraiapp.domain.dto.ticket.TicketQuantityDTO;
+import com.br.arraiapp.rest.service.implementation.CustomerTicketServiceImp;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.http.HttpHeaders;
+import org.apache.coyote.BadRequestException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.util.List;
 
 @CrossOrigin
 @RestController
 @RequestMapping("api/customer-ticket")
 public class CustomerTicketController {
 
-    @PostMapping("/redirect-to-app")
-    @ResponseStatus(HttpStatus.TEMPORARY_REDIRECT)
-    public ResponseEntity<?> redirectToApp(String json) throws JsonProcessingException, URISyntaxException {
+    @Autowired
+    private CustomerTicketServiceImp service;
 
-        URI uri = new URI("x");
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setLocation(uri);
-
-        return new ResponseEntity<>(httpHeaders, HttpStatus.TEMPORARY_REDIRECT);
+    @PostMapping("/get-payment-data")
+    @ResponseStatus(HttpStatus.OK)
+    public void getPaymentData(@RequestBody String json) throws JsonProcessingException {
+        service.getPaymentData(json);
     }
 
-    @PostMapping("/get-paymentData")
-    public JsonNode getPaymentData(@RequestBody String json) throws JsonProcessingException {
-        ObjectMapper objMapper = new ObjectMapper();
-        JsonNode jsonNode = objMapper.readTree(json);
-        System.out.println(jsonNode);
-        return jsonNode;
+    @PutMapping("/consume-ticket")
+    @ResponseStatus(HttpStatus.OK)
+    public void consumeTicket(@RequestBody CustomerTicketDTO dto) throws BadRequestException {
+        service.consumeTicket(dto);
     }
+
+    @PostMapping("/list-customer-tickets")
+    @ResponseStatus(HttpStatus.OK)
+    public List<TicketQuantityDTO> listCustomerTickets(@RequestBody String customerCpf){
+        return service.listCustomerTickets(customerCpf);
+    }
+
+
+
 
 }

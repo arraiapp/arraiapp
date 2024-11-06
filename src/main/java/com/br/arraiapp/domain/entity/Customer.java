@@ -4,16 +4,17 @@ package com.br.arraiapp.domain.entity;
 //Implementar adicionar ficha
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.util.Set;
 
 
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Data
+@Getter
 @Table( name = "customer")
 public class Customer extends User{
 

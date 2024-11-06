@@ -36,4 +36,10 @@ public class Ticket implements Serializable {
         this.description = description;
         this.value = value;
     }
+
+    public Ticket(Long id, String description, BigDecimal value) {
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    }
 }

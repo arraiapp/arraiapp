@@ -40,7 +40,7 @@ public class TicketController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<TicketDTO> findAll (){
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAA");return service.findAll();
+        return service.findAll();
     }
 
     @GetMapping("{id}")

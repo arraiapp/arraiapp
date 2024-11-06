@@ -2,8 +2,10 @@ package com.br.arraiapp.domain.dto.ticket;
 
 import com.br.arraiapp.domain.dto.DTOMapper;
 import com.br.arraiapp.domain.entity.Ticket;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,5 +39,37 @@ public class TicketMapper implements DTOMapper<TicketDTO, Ticket> {
 
         return dtoList;
     }
+
+    public List<TicketQuantityDTO> toDto (JsonNode json) {
+        List<TicketQuantityDTO> dtoList = new ArrayList<>();
+
+        for (JsonNode ticket :json.get("items")){
+            dtoList.add(new TicketQuantityDTO(
+                    ticket.get("reference_id").asLong(),
+                    ticket.get("name").asText(),
+                    new BigDecimal(ticket.get("unit_amount").asInt()).divide(new BigDecimal(10)),
+                    ticket.get("quantity").asLong()
+            ));
+        }
+
+        return dtoList;
+    }
+
+    public Ticket toEntity(TicketQuantityDTO dto){
+        return new Ticket(dto.id(),
+                dto.description(),
+                dto.value());
+    }
+
+    public TicketQuantityDTO toDto(Ticket ticket, Long quantity){
+        return new TicketQuantityDTO(
+                ticket.getId(),
+                ticket.getDescription(),
+                ticket.getValue(),
+                quantity
+        );
+    }
+
+
 
 }
