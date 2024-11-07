@@ -1,5 +1,6 @@
 package com.br.arraiapp.rest.controller;
 
+import com.br.arraiapp.domain.dto.CustomerTicket.CustomerTicketDTO;
 import com.br.arraiapp.rest.service.implementation.CheckoutServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,16 +17,8 @@ public class CheckoutController {
 
     @PostMapping(value = "/new-checkout")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<String> createCheckout(){
-        return service.createCheckout();
+    public ResponseEntity<String> createCheckout(CustomerTicketDTO checkoutData) {
+        return service.createCheckout(checkoutData);
     }
-
-    @PostMapping(value = "/notify-checkout")
-    public void receiveCheckoutNotification(@RequestBody String string){
-        System.out.println(string);
-    }
-
-
-
 
 }

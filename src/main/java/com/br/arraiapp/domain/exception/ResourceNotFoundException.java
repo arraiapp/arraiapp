@@ -9,5 +9,7 @@ public class ResourceNotFoundException extends RuntimeException{
     private static final long serialVersionUID = 1L;
 
     public ResourceNotFoundException(String e) {super(e);}
+
+    public ResourceNotFoundException() {super("Entity not found");}
 }
 

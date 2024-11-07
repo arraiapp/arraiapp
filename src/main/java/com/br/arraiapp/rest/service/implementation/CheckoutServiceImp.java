@@ -1,5 +1,7 @@
 package com.br.arraiapp.rest.service.implementation;
 
+import com.br.arraiapp.domain.dto.CustomerTicket.CustomerTicketDTO;
+import com.br.arraiapp.domain.dto.ticket.TicketQuantityDTO;
 import com.br.arraiapp.rest.service.CheckoutService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -8,10 +10,35 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.math.BigDecimal;
+
 @Service
 public class CheckoutServiceImp implements CheckoutService {
 
-    public ResponseEntity<String> createCheckout(){
+    public ResponseEntity<String> createCheckout(CustomerTicketDTO checkoutData) {
+
+        String customerName = checkoutData.customer().name();
+        String customerEmail = checkoutData.customer().email();
+        String customerCpf = checkoutData.customer().cpf();
+
+        String customerPhone = checkoutData.customer().phone();
+        String customerPhoneArea = customerPhone.substring(0, 2);
+        String customerPhoneNumber = customerPhone.substring(3);
+
+        String ticketJson = "";
+        for(TicketQuantityDTO ticket: checkoutData.tickets()) {
+            ticketJson = ticketJson + "{" +
+                                            "\"reference_id\":\"" + ticket.id() +"\"," +
+                                            "\"name\":\"" + ticket.description() + "\"," +
+                                            "\"description\":\"" + ticket.description() + "\"," +
+                                            "\"quantity\":\"" + ticket.quantity() + "\"," +
+                                            "\"unit_amount\":\"" + ticket.value().multiply(BigDecimal.valueOf(100)) + "\"" +
+                                      "}";
+            if(checkoutData.tickets().indexOf(ticket) != (checkoutData.tickets().size() - 1)) {
+                ticketJson = ticketJson + ",";
+            }
+        }
+
         RestTemplate restTemplate = new RestTemplate();
 
         String url = "https://sandbox.api.pagseguro.com/checkouts";
@@ -25,29 +52,19 @@ public class CheckoutServiceImp implements CheckoutService {
         //Customer data
         String customerData =  "\"customer\":" +
                 "{" +
-                    "\"name\":\"João teste\"," +
-                    "\"email\":\"joao@teste.com\"," +
-                    "\"tax_id\":\"12345678909\"" +
-                    "\"phone\":{\"country\":\"+55\",\"area\":\"27\",\"number\":\"999999999\"}" +
+                    "\"name\":\"" + customerName + "\"," +
+                    "\"email\":\"" + customerEmail + "\"," +
+                    "\"tax_id\":\"" + customerCpf + "\"," +
+                    "\"phone\":{\"country\":\"+55\",\"area\":\"" + customerPhoneArea +
+                                         "\",\"number\":\"" + customerPhoneNumber +"\"}" +
                 "},";
 
         //Ticket data
+
         String ticketData = "\"items\":" +
                 "[" +
-                    "{" +
-                        "\"reference_id\":\"1\"," +
-                        "\"name\":\"ticket\"," +
-                        "\"description\":\"ticket desc\"," +
-                        "\"quantity\":\"1\"," +
-                        "\"unit_amount\":\"500\"" +
-                    "}," +
-                    "{" +
-                        "\"reference_id\":\"2\"," +
-                        "\"name\":\"ticket 2\"," +
-                        "\"description\":\"ticket 2 desc\"," +
-                        "\"quantity\":\"2\"," +
-                        "\"unit_amount\":\"500\"" +
-                    "}" +
+                    ticketJson
+                    +
                 "],";
 
         //Payment methods
@@ -67,7 +84,7 @@ public class CheckoutServiceImp implements CheckoutService {
         //String redirectUrl = ",\"redirect_url\":\"http://arraiapp.dev/api/checkout/notify-checkout\"";
 
         //Payment Notification Url
-        String paymentNotificationURL = ",\"payment_notification_urls\":[\"http://ec2-3-86-32-26.compute-1.amazonaws.com:8080/api/customer-ticket/get-paymentData\"]";
+        String paymentNotificationURL = ",\"payment_notification_urls\":[\"http://ec2-3-86-32-26.compute-1.amazonaws.com:8080/api/customer-ticket/get-payment-data\"]";
 
         String requestBody = "{" + customerData + ticketData + paymentMethods + paymentNotificationURL + "}";
 
