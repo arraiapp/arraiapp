@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.DocFlavor;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api/checkout")
@@ -17,7 +19,7 @@ public class CheckoutController {
 
     @PostMapping(value = "/new-checkout")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<String> createCheckout(CustomerTicketDTO checkoutData) {
+    public ResponseEntity<String> createCheckout(@RequestBody CustomerTicketDTO checkoutData) {
         return service.createCheckout(checkoutData);
     }
 
