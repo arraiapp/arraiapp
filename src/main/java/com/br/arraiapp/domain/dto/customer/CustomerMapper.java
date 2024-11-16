@@ -24,7 +24,7 @@ public class CustomerMapper implements DTOMapper<CustomerDTO, Customer> {
                 entity.getId(),
                 entity.getName(),
                 entity.getEmail(),
-                entity.getEmail(),
+                entity.getPassword(),
                 entity.getCpf(),
                 entity.getPhone()
         );
