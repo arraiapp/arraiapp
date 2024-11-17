@@ -32,7 +32,7 @@ public class CheckoutServiceImp implements CheckoutService {
                                             "\"name\":\"" + ticket.description() + "\"," +
                                             "\"description\":\"" + ticket.description() + "\"," +
                                             "\"quantity\":\"" + ticket.quantity() + "\"," +
-                                            "\"unit_amount\":\"" + ticket.value().multiply(BigDecimal.valueOf(100)) + "\"" +
+                                            "\"unit_amount\":\"" + ticket.value().multiply(BigDecimal.valueOf(100)).toBigInteger() + "\"" +
                                       "}";
             if(checkoutData.tickets().indexOf(ticket) != (checkoutData.tickets().size() - 1)) {
                 ticketJson = ticketJson + ",";
