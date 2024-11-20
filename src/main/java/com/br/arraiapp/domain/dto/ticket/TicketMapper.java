@@ -42,8 +42,8 @@ public class TicketMapper implements DTOMapper<TicketDTO, Ticket> {
 
     public List<TicketQuantityDTO> toDto (JsonNode json) {
         List<TicketQuantityDTO> dtoList = new ArrayList<>();
-
-        for (JsonNode ticket :json.get("items")){
+        System.out.println(json);
+        for (JsonNode ticket :json){
             dtoList.add(new TicketQuantityDTO(
                     ticket.get("reference_id").asLong(),
                     ticket.get("name").asText(),
