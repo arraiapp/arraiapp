@@ -44,9 +44,11 @@ public class TicketMapper implements DTOMapper<TicketDTO, Ticket> {
         List<TicketQuantityDTO> dtoList = new ArrayList<>();
         System.out.println(json);
         for (JsonNode ticket :json){
+
+            System.out.println(ticket);
             System.out.println(ticket.get("reference_id").asLong());
             System.out.println(ticket.get("name").asText());
-            System.out.println(ticket.get("unit_amount").asInt()).divide(new BigDecimal(10));
+            System.out.println(new BigDecimal(ticket.get("unit_amount").asInt()).divide(new BigDecimal(10)));
             System.out.println(ticket.get("quantity").asLong());
             
             dtoList.add(new TicketQuantityDTO(
