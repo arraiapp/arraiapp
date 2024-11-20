@@ -42,7 +42,7 @@ public class CustomerTicketServiceImp implements CustomerTicketService {
         System.out.println("json :" + jsonNode);
         System.out.println("json status :" + jsonNode.get("charges").get(0).get("status").asText());
 
-        if (jsonNode.get("charges").get("status").asText().equals("PAID")) {
+        if (jsonNode.get("charges").get(0).get("status").asText().equals("PAID")) {
             List<TicketQuantityDTO> ticketDTOList = ticketMapper.toDto(jsonNode.get("items"));
             addTicket(jsonNode.get("tax_id").asText(), ticketDTOList);
         }
