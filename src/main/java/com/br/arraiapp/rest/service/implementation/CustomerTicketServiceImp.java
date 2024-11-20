@@ -39,14 +39,15 @@ public class CustomerTicketServiceImp implements CustomerTicketService {
         ObjectMapper objMapper = new ObjectMapper();
         JsonNode jsonNode = objMapper.readTree(json);
 
-        System.out.println("json :" + jsonNode);
-        System.out.println("json status :" + jsonNode.get("charges").get(0).get("status").asText());
+        String paymentStatus = jsonNode.get("charges").get(0).get("status").asText();
 
-        if (jsonNode.get("charges").get(0).get("status").asText().equals("PAID")) {
+        if (paymentStatus.equals("PAID")) {
+            System.out.println("Entrou no if");
             List<TicketQuantityDTO> ticketDTOList = ticketMapper.toDto(jsonNode.get("items"));
             addTicket(jsonNode.get("tax_id").asText(), ticketDTOList);
         }
         else {
+            System.out.println("Entrou no else");
             throw new CheckoutNotPaidException("Checkout not paid");
         }
     }
