@@ -44,6 +44,7 @@ public class CustomerTicketServiceImp implements CustomerTicketService {
         if (paymentStatus.equals("PAID")) {
             System.out.println("Entrou no if");
             List<TicketQuantityDTO> ticketDTOList = ticketMapper.toDto(jsonNode.get("items"));
+            System.out.println("Lista de ticketDTO: " + ticketDTOList);
             addTicket(jsonNode.get("tax_id").asText(), ticketDTOList);
         }
         else {
@@ -54,10 +55,11 @@ public class CustomerTicketServiceImp implements CustomerTicketService {
 
     @Override
     public void addTicket(String customerCPF, List<TicketQuantityDTO> ticketDTOList){
+        System.out.println("Entrou no método addTicket");
         Customer customer = customersRepository.findByCpf(customerCPF)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
 
-
+        System.out.println("Entrou o customer: " + customer);
         for(TicketQuantityDTO ticketDTO : ticketDTOList){
                 Ticket ticket = ticketMapper.toEntity(ticketDTO);
                 if(customerTicketRepository.findByCustomerIdAndTicketId(customer.getId(), ticket.getId()).isEmpty()){
