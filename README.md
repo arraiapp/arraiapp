@@ -7,6 +7,18 @@
 - [Postman](https://www.postman.com/)
 - [IntelliJ](https://www.jetbrains.com/pt-br/idea/) ou qualquer outra IDE
 
+## Descrição do Projeto
+
+Arraiapp é uma aplicação web focada em mobile de autoatendimento desenvolvida para facilitar a venda de fichas em festas juninas. Com uma interface simples e intuitiva, o sistema permite aos usuários comprar fichas de maneira prática, agilizando a experiência no evento e reduzindo filas.
+
+Esse reposítorio se refere a parte do backend.
+
+📌 [Link da documentação completa](https://drive.google.com/file/d/1-xPX5pylaB8QlzHiy0QG18vkGUEEYGlQ/view?usp=drive_link)
+
+📌 [Link do frontend da página do administrador](https://github.com/arraiapp/arraiapp_loja)
+
+📌 [Link do frontend da página do usuário](https://github.com/arraiapp/arraiapp_front)
+
 ## 🚀 Como utilizar
 
 1 - Clone o projeto no git bash
